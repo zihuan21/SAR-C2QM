@@ -7,7 +7,7 @@ Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-con
 This repository will be progressively updated with the following components:
 
 - [x] 1. Conda environment configuration file
-- [ ] 2. Core code of the model
+- [x] 2. Core code of the model
 - [ ] 3. Organize and update the code
 
 ## Environment Setup
