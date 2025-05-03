@@ -20,5 +20,6 @@ A suitable conda environment named SAR_C2QM can be created with:
 
 ```bash
 conda env create -f environment.yaml
+```bash
 
 Please note that additional packages stored in the `src` directory will also be installed during the conda environment creation.
