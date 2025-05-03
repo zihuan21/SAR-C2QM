@@ -7,10 +7,7 @@ Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-con
 This repository will be progressively updated with the following components:
 
 - [x] 1. Conda environment configuration file
-- [ ] 2. Autoencoder code
-- [ ] 3. Autoencoder training code and hyperparameter configuration files
-- [ ] 4. Multimodal correlation-preserving LDM code
-- [ ] 5. Multimodal correlation-preserving LDM training code and hyperparameter configuration files
+- [ ] 2. Core model code
 
 ## Environment Setup
 
