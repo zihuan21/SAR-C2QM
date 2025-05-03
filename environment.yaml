@@ -1,4 +1,4 @@
-name: SAR-C2QM
+name: SAR_C2QM
 channels:
   - pytorch
   - defaults
