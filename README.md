@@ -16,7 +16,7 @@ This repository will be progressively updated with the following components:
 
 ## Environment Setup
 
-A suitable conda environment named SAR-C2QM can be created with:
+A suitable conda environment named SAR_C2QM can be created with:
 
 ```bash
 conda env create -f environment.yaml
