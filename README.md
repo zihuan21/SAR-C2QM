@@ -10,9 +10,9 @@
 
 This repository will be progressively updated with the following components:
 
-✅ 1. Conda environment configuration file
-✅ 2. Core code of the model
-⬜ 3. Organize and update the code
+- ✅ 1. Conda environment configuration file
+- ✅ 2. Core code of the model
+- ⬜ 3. Organize and update the code
 
 ## Environment Setup
 
