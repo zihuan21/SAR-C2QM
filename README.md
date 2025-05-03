@@ -1,6 +1,10 @@
+<div align="center">
+  
 # SAR-C2QM
 
-Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-constrained multimodal correlation-preserving latent diffusion framework
+**Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-constrained multimodal correlation-preserving latent diffusion framework**
+
+</div>
 
 ## Open Source Plan
 
