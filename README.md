@@ -4,7 +4,7 @@
 
 </div>
 
-An implementation of manuscript "Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-constrained multimodal correlation-preserving latent diffusion framework"
+An implementation of manuscript "Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-constrained multimodal correlation-preserving latent diffusion framework".
 
 ## Open Source Plan
 
