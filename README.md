@@ -1,8 +1,4 @@
-<div align="center">
-  
 # SAR-C2QM
-
-</div>
 
 An implementation of manuscript "Compact-pol to quad-pol SAR reconstruction via a joint mathematical-physical-constrained multimodal correlation-preserving latent diffusion framework".
 
