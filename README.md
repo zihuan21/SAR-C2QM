@@ -12,7 +12,8 @@ This repository will be progressively updated with the following components:
 
 - ✅ 1. Conda environment configuration file
 - ✅ 2. Core code of the model
-- ⬜ 3. Organize and update the code
+- ⬜ 3. Training scripts
+- ⬜ 4. Model and training configuration files
 
 ## Environment Setup
 
