@@ -49,7 +49,7 @@ lightning:
     image_logger:
       target: main_C2Q.ImageLogger
       params:
-        epoch_frequency: 1
+        epoch_frequency: 5
         max_images: 8
 
   trainer:
