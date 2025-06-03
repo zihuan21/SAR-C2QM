@@ -27,7 +27,7 @@ Please note that additional packages stored in the `src` directory will also be 
 
 ## Model Training
 
-### The Autoencoder Training
+### The Auto-encoder Training
 ```bash
 python train.py --base configs/C2Q_Autoencoder.yaml
 `````
