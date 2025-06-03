@@ -24,3 +24,13 @@ conda env create -f environment.yaml
 `````
 
 Please note that additional packages stored in the `src` directory will also be installed during the conda environment creation.
+
+## Model Training
+
+### The Autoencoder Training
+```bash
+python train.py --base configs/C2Q_Autoencoder.yaml
+
+### The multimodal correlation-preserving LDM Training
+```bash
+python train.py --base configs/C2Q_LDM.yaml
