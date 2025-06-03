@@ -1,0 +1,111 @@
+model:
+  base_learning_rate: 1.0e-6
+  target: SAR_C2QM.models.diffusion.c2q_ddpm.C2QLDM_RHV_imp
+  params:
+    linear_start: 0.0015
+    linear_end: 0.0155
+    num_timesteps_cond: 500
+    log_every_t: 100
+    timesteps: 500
+    loss_type: l1
+    first_stage_key: img_XL
+    cond_stage_key: [modal_1, modal_2]
+    image_size: 64
+    channels: 9
+    cond_stage_trainable: True
+    concat_mode: True
+    scale_by_std: True
+    parameterization: "x0"
+    use_ema: False
+
+    unet_config:
+      target: ldm.modules.diffusionmodules.openaimodel.UNetModel
+      params:
+        image_size: 64
+        in_channels: 18
+        out_channels: 9
+        model_channels: 64
+        attention_resolutions: [ 2, 4, 8 ]
+        num_res_blocks: 2
+        channel_mult: [ 1,2,3,4]
+        num_heads: 8
+        use_scale_shift_norm: True
+        resblock_updown: True
+
+    first_stage_config:
+      target: SAR_C2QM.models.autoencoder.c2q_autoencoder.AutoencoderKL_RHV_imp
+      params:
+        embed_dim: 9
+        monitor: "val/rec_loss"
+        ckpt_path: "logs_RHV/GF3_C2Q_autoencoder_kl_f4_first_imp1_2025-04-03T22-40-09/checkpoints/best_model-v1.ckpt"
+        ddconfig:
+          double_z: True
+          z_channels: 9
+          resolution: 256
+          in_channels: 12
+          out_ch: 12
+          ch: 64
+          ch_mult: [ 1,2,4 ]
+          num_res_blocks: 2
+          attn_resolutions: [ ]
+          dropout: 0.0
+        lossconfig:
+          target: torch.nn.Identity
+
+    cond_stage_config: 
+      target: SAR_C2QM.models.condencoder.c2q_condencoder.ConditionEncoders_RHV_imp
+      params:
+        model_name: resnet18
+        sar_in_ch: 13
+        geo_in_ch: 5
+        out_ch: 9
+        in_size: 256
+        out_size: 64
+        
+data:
+  target: main_C2Q.DataModuleFromConfig
+  params:
+    batch_size: 16
+    num_workers: 0
+    train:
+      target: SAR_C2QM.data.c2q_real_ds.RealNumPyDataset_C2QLDM
+      params:
+        ds_dir: data/250403_c2q_RHV_GF3_MultiWaveCode
+        flag_use: 0
+        flag_obj_data: img_XL
+        flag_cond_data:
+          modal_1: [img_XC, img_Stokes]
+          modal_2: [img_geoInfo]
+        flag_aug: False
+    validation:
+      target: SAR_C2QM.data.c2q_real_ds.RealNumPyDataset_C2QLDM
+      params:
+        ds_dir: data/250403_c2q_RHV_GF3_MultiWaveCode
+        flag_use: 1
+        flag_obj_data: img_XL
+        flag_cond_data:
+          modal_1: [img_XC, img_Stokes]
+          modal_2: [img_geoInfo]
+        flag_aug: False
+
+lightning:
+  callbacks:
+    image_logger:
+      target: main_C2Q.ImageLogger
+      params:
+        epoch_frequency: 1
+        max_images: 8
+
+  trainer:
+    benchmark: True
+    accelerator: gpu
+    gpus: 0,
+    max_epochs: 50
+  
+  modelcheckpoint:
+    target: pytorch_lightning.callbacks.ModelCheckpoint
+    params:
+      filename: "best_model"
+      save_last: True
+      monitor: "val/loss"
+      save_top_k: 1
