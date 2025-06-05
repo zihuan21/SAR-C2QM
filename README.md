@@ -32,7 +32,7 @@ datasets/
 ├── img_XC/                   # Dual-pol C2 matrix elements (f₁~f₅)
 ├── img_Stokes/               # Dual-pol Stokes vector parameters and decomposition components (f₆~f₁₃)
 ├── img_geoInfo/              # Terrain-imaging information (x_TI)
-├── img_XL/                   # Full-polarization data (x_QP)
+├── img_XL/                   # Quad-pol data (x_QP)
 └── info/                     # File lists
     ├── train_files.txt       # Training slice filenames
     └── val_files.txt         # Validation slice filenames
