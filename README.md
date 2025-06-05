@@ -29,7 +29,7 @@ Please note that additional packages stored in the `src` directory will also be 
 
 ```bash
 datasets/
-├── img_XC/                   # Dual-pol C2 matrix elements ($f_1$~$f_5$)
+├── img_XC/                   # Dual-pol C2 matrix elements (f<sub>1</sub>~$f<sub>5</sub>)
 ├── img_Stokes/               # Dual-pol Stokes vector parameters and decomposition components (f6~f13)
 ├── img_geoInfo/              # Terrain-imaging information (xTI)
 ├── img_XL/                   # Full-polarization data (xQP)
