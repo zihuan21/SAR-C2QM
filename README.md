@@ -25,6 +25,19 @@ conda env create -f environment.yaml
 
 Please note that additional packages stored in the `src` directory will also be installed during the conda environment creation.
 
+## Dataset Structure
+
+```bash
+datasets/
+├── img_XC/                   # Dual-pol C2 matrix elements ($f_1$~$f_5$)
+├── img_Stokes/               # Dual-pol Stokes vector parameters and decomposition components (f6~f13)
+├── img_geoInfo/              # Terrain-imaging information (xTI)
+├── img_XL/                   # Full-polarization data (xQP)
+└── info/                     # File lists
+    ├── train_files.txt       # Training slice filenames
+    └── val_files.txt         # Validation slice filenames
+`````
+
 ## Model Training
 
 ### The Auto-encoder Training
