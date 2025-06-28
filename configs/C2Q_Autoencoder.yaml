@@ -64,6 +64,6 @@ lightning:
     params:
       filename: "best_model"
       save_last: True
-      monitor: "val/loss"
+      monitor: "val/rec_loss"
       save_top_k: 1
   
