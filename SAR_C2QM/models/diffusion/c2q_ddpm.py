@@ -19,6 +19,27 @@ class C2QLDM_RHV_bs(LatentDiffusion):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def training_step(self, batch, batch_idx):
+        loss, loss_dict = self.shared_step(batch)
+
+        self.log_dict(loss_dict, prog_bar=True,
+                      logger=True, on_step=False, on_epoch=True)
+
+        self.log("global_step", self.global_step,
+                 prog_bar=True, logger=True, on_step=True, on_epoch=False)
+
+        if self.use_scheduler:
+            lr = self.optimizers().param_groups[0]['lr']
+            self.log('lr_abs', lr, prog_bar=True, logger=True, on_step=True, on_epoch=False)
+
+        return loss
+    
+    def register_schedule(self,
+                          given_betas=None, beta_schedule="linear", timesteps=1000,
+                          linear_start=1e-4, linear_end=2e-2, cosine_s=8e-3):
+        DDPM.register_schedule(self, given_betas, beta_schedule, timesteps, linear_start, linear_end, cosine_s)
+        self.shorten_cond_schedule = False
+
     def apply_model(self, x_noisy, t, cond, return_ids=False):
         """反向扩散：在时间步t下，结合条件cond，预测噪声(eps)或原始无噪声图像(x0)（潜在空间中）"""
 
